@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 
 import { fetchProfileData } from './fakeAPI';
+import Gallery from './List';
 
 const getNextId = id => (id === 3 ? 0 : id + 1);
 const initialResource = fetchProfileData(0);
@@ -60,17 +61,18 @@ function ProfilePage({ resource }) {
   const foo = useDeferredValue(value, { timeoutMs: 1000 });
   return (
     <Suspense fallback={<h1>Loading profile...</h1>}>
-      <ProfileDetails resource={resource} />
+      {/* <ProfileDetails resource={resource} />
       <Suspense fallback={<h1>Loading posts...</h1>}>
         <ProfileTimeline resource={resource} />
-      </Suspense>
-      <input
+      </Suspense> */}
+      <Gallery />
+      {/* <input
         type="text"
         value={value}
         onChange={event => setValue(event.target.value)}
       />
       <hr />
-      <SlowList str={foo} />
+      <SlowList str={foo} /> */}
     </Suspense>
   );
 }
